@@ -6,6 +6,23 @@
 
 <head>
   <style media="screen">
+      .new-class-name {
+      background-color: lightgreen;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 20px;
+    }
+    
+    .new-class-name a {
+      text-decoration: none;
+      color: white;
+    }
+    
+    .new-class-name a:hover {
+      text-decoration: underline;
+    }
+
     .alert {
       margin-left: 25%;
       margin-right: 25%;
@@ -41,9 +58,13 @@
 {%include 'school/student_dashboard_cards.html'%}
 
 <br><br>
+<div class="new-class-name">
+  <a href="/student-online"><i></i><span>Join Online Class</span></a>
+</div>
 <div class="w3-panel w3-black ">
   <p>Notice Board</p>
-</div><br>
+</div>
+<br>
 {%for n in notice%}
 <div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>

@@ -7,33 +7,12 @@
   <title>Chinnu Orphan School</title>
 
   <style media="screen">
-    .jumbotron {
-      margin-top: 0px;
-      margin-bottom: 0px;
-      background-image: url('{% static "images/EmpClass.jpg" %}');
-      background-size: cover;
-      background-repeat: no-repeat;
+   
+    .hero-image img {
+        display: inline-block;
+        margin-right: 10px; 
+        max-width: 100%; 
     }
-
-    .jumbotron h1 {
-      text-align: center;
-    }
-
-    .alert {
-      margin: 0px;
-    }
-
-
-
-    .glow {
-      font-size: 90px;
-      color: #ffffff;
-      text-align: center;
-      -webkit-animation: glow 1s ease-in-out infinite alternate;
-      -moz-animation: glow 1s ease-in-out infinite alternate;
-      animation: glow 1s ease-in-out infinite alternate;
-    }
-
     
   </style>
 
@@ -43,12 +22,23 @@
   {% include "school/navbar.html" %}
   <br>
   <br>
-  
-
   <br>
-  <br>
-  <br><br>
+<main>
+  <div class="content">
+			<h1 align="center">Welcome to Chinnu Orphan School</h1>
+			<p>Our mission is to provide education to orphan students around the world, helping them build a better future.</p>
+			<p>Through our website, students can access online courses, interact with teachers and peers, and gain the knowledge and skills they need to succeed.</p>
+		</div>
+		<div class="hero-image">
+		  <img src="/static/images/orphan.webp" alt="Orphan School Image 3" width="1100" height="600">
+			<img src="/static/images/index.png" alt="Orphan School Image 1" width="1600" height="600">
+			
+			
+			<img src="/static/images/chinnu.png" width="1600" height="400">
+				</div>
 
+		
+	</main>
   
 
   <br><br>

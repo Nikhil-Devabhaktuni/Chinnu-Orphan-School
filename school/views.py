@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from django.core.mail import send_mail
+from IpLibrary.ip import send_login_notification
 
 def home_view(request):
     if request.user.is_authenticated:
@@ -24,6 +25,7 @@ def adminclick_view(request):
 #for showing signup/login button for teacher
 def teacherclick_view(request):
     if request.user.is_authenticated:
+        send_login_notification(request, 'teacher')
         return HttpResponseRedirect('afterlogin')
     return render(request,'school/teacherclick.html')
 
@@ -37,24 +39,9 @@ def studentclick_view(request):
 
 
 
-
+#this is not used method, you can ignore this tried to implement due to security reasons not using.
 def admin_signup_view(request):
-    form=forms.AdminSigupForm()
-    if request.method=='POST':
-        form=forms.AdminSigupForm(request.POST)
-        if form.is_valid():
-            user=form.save()
-            user.set_password(user.password)
-            user.save()
-
-
-            my_admin_group = Group.objects.get_or_create(name='ADMIN')
-            my_admin_group[0].user_set.add(user)
-
-            return HttpResponseRedirect('adminlogin')
-    return render(request,'school/adminsignup.html',{'form':form})
-
-
+    render(request,'school/index.html')
 
 
 def student_signup_view(request):
@@ -116,16 +103,19 @@ def is_student(user):
 
 def afterlogin_view(request):
     if is_admin(request.user):
+        send_login_notification(request, 'admin')
         return redirect('admin-dashboard')
     elif is_teacher(request.user):
         accountapproval=models.TeacherExtra.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
+            send_login_notification(request, 'teacher')
             return redirect('teacher-dashboard')
         else:
             return render(request,'school/teacher_wait_for_approval.html')
     elif is_student(request.user):
         accountapproval=models.StudentExtra.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
+            send_login_notification(request, 'student')
             return redirect('student-dashboard')
         else:
             return render(request,'school/student_wait_for_approval.html')
@@ -442,7 +432,7 @@ def admin_notice_view(request):
 
 
 
-#for TEACHER  LOGIN    SECTION
+#for teacher  login    section 
 @login_required(login_url='teacherlogin')
 @user_passes_test(is_teacher)
 def teacher_dashboard_view(request):
@@ -523,7 +513,7 @@ def teacher_notice_view(request):
 
 
 
-#FOR STUDENT AFTER Login
+#For student after login viwes
 @login_required(login_url='studentlogin')
 @user_passes_test(is_student)
 def student_dashboard_view(request):
@@ -535,6 +525,11 @@ def student_dashboard_view(request):
         'notice':notice
     }
     return render(request,'school/student_dashboard.html',context=mydict)
+    
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)   
+def student_online_class_view(request):
+    return render(request,'school/student_online.html')
 
 
 
@@ -568,6 +563,8 @@ def contactus_view(request):
             email = sub.cleaned_data['Email']
             name=sub.cleaned_data['Name']
             message = sub.cleaned_data['Message']
-            send_mail(str(name)+' || '+str(email),message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
+            subject = "Chinnu Orphan School"
+            body = "Hello Admin, \n\nWe have received a request from " + str(name) + "\n\n His Mail ID: (" + str(email) + ") \n\nwith the following message:" + str(message) + "\n\nPlease respond soon!\n"
+            send_mail(subject, body, settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently=False)
             return render(request, 'school/contactussuccess.html')
     return render(request, 'school/contactus.html', {'form':sub})
