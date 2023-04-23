@@ -25,8 +25,6 @@ urlpatterns = [
 
 
     path('admin-dashboard', views.admin_dashboard_view,name='admin-dashboard'),
-
-
     path('admin-teacher', views.admin_teacher_view,name='admin-teacher'),
     path('admin-add-teacher', views.admin_add_teacher_view,name='admin-add-teacher'),
     path('admin-view-teacher', views.admin_view_teacher_view,name='admin-view-teacher'),
@@ -49,9 +47,7 @@ urlpatterns = [
     path('admin-attendance', views.admin_attendance_view,name='admin-attendance'),
     path('admin-take-attendance/<str:cl>', views.admin_take_attendance_view,name='admin-take-attendance'),
     path('admin-view-attendance/<str:cl>', views.admin_view_attendance_view,name='admin-view-attendance'),
-
-
-   path('admin-notice', views.admin_notice_view,name='admin-notice'),
+    path('admin-notice', views.admin_notice_view,name='admin-notice'),
 
     path('teacher-dashboard', views.teacher_dashboard_view,name='teacher-dashboard'),
     path('teacher-attendance', views.teacher_attendance_view,name='teacher-attendance'),

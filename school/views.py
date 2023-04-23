@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from django.core.mail import send_mail
-from IpLibrary.ip import send_login_notification
+import IpLibrary.ip as chinnu
 
 def home_view(request):
     if request.user.is_authenticated:
@@ -25,7 +25,7 @@ def adminclick_view(request):
 #for showing signup/login button for teacher
 def teacherclick_view(request):
     if request.user.is_authenticated:
-        send_login_notification(request, 'teacher')
+        chinnu.send_login_notification(request, 'teacher')
         return HttpResponseRedirect('afterlogin')
     return render(request,'school/teacherclick.html')
 
@@ -103,19 +103,19 @@ def is_student(user):
 
 def afterlogin_view(request):
     if is_admin(request.user):
-        send_login_notification(request, 'admin')
+        chinnu.send_login_notification(request, 'admin')
         return redirect('admin-dashboard')
     elif is_teacher(request.user):
         accountapproval=models.TeacherExtra.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
-            send_login_notification(request, 'teacher')
+            chinnu.send_login_notification(request, 'teacher')
             return redirect('teacher-dashboard')
         else:
             return render(request,'school/teacher_wait_for_approval.html')
     elif is_student(request.user):
         accountapproval=models.StudentExtra.objects.all().filter(user_id=request.user.id,status=True)
         if accountapproval:
-            send_login_notification(request, 'student')
+            chinnu.send_login_notification(request, 'student')
             return redirect('student-dashboard')
         else:
             return render(request,'school/student_wait_for_approval.html')
@@ -142,22 +142,13 @@ def admin_dashboard_view(request):
     mydict={
         'teachercount':teachercount,
         'pendingteachercount':pendingteachercount,
-
         'studentcount':studentcount,
         'pendingstudentcount':pendingstudentcount,
-
-        
-
         'notice':notice
-
+        
     }
 
     return render(request,'school/admin_dashboard.html',context=mydict)
-
-
-
-
-
 
 
 #for teacher section by admin
