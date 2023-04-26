@@ -1,10 +1,5 @@
-{% extends 'school/adminbase.html' %}
 {% load static %}
 
-
-
-
-{% block content %}
 
 <head>
   <style media="screen">
@@ -12,7 +7,7 @@
       margin-left: 25%;
       margin-right: 25%;
       padding: 20px;
-      background-color: #f44336;
+      background-color: lightblue;
       color: white;
     }
 
@@ -32,29 +27,66 @@
     }
 
     .closebtn:hover {
-      color: black;
+      color: lightblue;
     }
+.bs-example {
+    margin: 0px;
+  }
 
+  .navbar-brand {
+    font-size: 20px;
+    font-family: sans-serif;
+  }
 
   </style>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 <br>
+<br>
+<br>
+
+   <center>
+
+      <img src="{% static "images/admin.png" %}" class="profile_image" alt="" width="150" height="150">
+      <h4>Hello Admin, {{request.user.first_name}}</h4>
+
+    </center>
+
+    
+
+ <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/admin-dashboard" class="nav-item nav-link">Dashboard</a>
+          <a href="/admin-teacher" class="nav-item nav-link">Teacher</span></a>
+          <a href="/admin-student" class="nav-item nav-link">Student</span></a>
+          <a href="/admin-attendance" class="nav-item nav-link">Attendance</span></a>
+          <a href="/admin-notice" class="nav-item nav-link">Notice</span></a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+
 
 {%include 'school/admin_dashboard_cards.html'%}
-
+{%include 'school/footer.html'%}
 <br><br>
-<div class="w3-panel w3-black">
-  <p>Notice Board</p>
-</div><br>
-{%for n in notice%}
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>Posted on {{n.date}} </strong><br><b>By : {{n.by}}</b><br> {{n.message}}
-</div>
-{%endfor%}
 
 
-
-{% endblock content %}

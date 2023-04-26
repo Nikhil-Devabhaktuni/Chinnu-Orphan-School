@@ -1,8 +1,16 @@
-{% extends 'school/teacherbase.html' %}
 {% load widget_tweaks %}
 {% block content %}
 
 <head>
+  
+  <title>Chinnu Orphan School</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
   <style media="screen">
     a:link {
       text-decoration: none;
@@ -17,6 +25,7 @@
       line-height: 100px;
     }
 
+    
     .form-content {
       padding: 5%;
       border: 2px solid #ced4da;
@@ -37,6 +46,18 @@
       background: #4caf50;
       color: #fff;
     }
+       
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+  
   </style>
 
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -45,12 +66,46 @@
 
 </head>
 
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/teacher-dashboard" class="nav-item nav-link">Home</a>
+          <a href="/teacher-dashboard" class="nav-item nav-link">Dashboard</a>
+          <!--<a herf="/teacher-online" class="nav-item nav-link">Upcomig features</a> -->
+          <a href="/teacher-attendance" class="nav-item nav-link">Attendance</a>
+          <a href="/teacher-notice" class="nav-item nav-link">Announcement to Notice Board</a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+        
+        
+      </div>
+    </nav>
+  </div>
+  
+  <br>
+  <br>
+  <br>
+  
+  
+
 <form method="post">
   {% csrf_token %}
   <div class="container register-form">
     <div class="form">
       <div class="note">
-        <p>Announce Something</p>
+        <p>Make An Announcement</p>
       </div>
       <div class="form-content">
         <div class="row">
@@ -69,4 +124,9 @@
   </div>
 
 </form>
+			<img src="/static/images/chinnu.png" width="1600" height="250">
+
+ {% include "school/footer.html" %}
+
+
 {% endblock content %}

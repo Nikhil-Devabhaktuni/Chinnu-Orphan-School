@@ -1,6 +1,5 @@
-{% extends 'school/studentbase.html' %}
-{% block content %}
-
+<!DOCTYPE html>
+<html>
 <head>
 
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -22,30 +21,24 @@
   </style>
 
 </head>
-<div class="container">
-  <div class="row">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h6 class="panel-title">Your Attendance of date {{date}}</h6>
-      </div>
-      <table class="table table-hover table-striped table-bordered" id="dev-table">
-        <thead>
-          <tr>
-            <th>Student Name</th>
-            <th>Student Roll</th>
-            <th>Present/Absent</th>
-          </tr>
-        </thead>
-        {%for attendancedata,studentdata in mylist %}
-        <tr>
-          <td>{{studentdata.get_name}}</td>
-          <td>{{studentdata.roll}}</td>
-          <td>{{attendancedata.present_status}}</td>
-        </tr>
-        {%endfor%}
-      </table>
-    </div>
-  </div>
+
+
+<body>
+  
+<div class="w3-panel w3-black ">
+  <p>Notice Board</p>
 </div>
+<br>
+{%for n in notice%}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Posted on {{n.date}} </strong><br><b>By : {{n.by}}</b><br> {{n.message}}
+</div>
+{%endfor%}
+
+
+
 
 {% endblock content %}
+</body>
+</html>

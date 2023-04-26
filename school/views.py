@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.conf import settings
 from django.core.mail import send_mail
 import IpLibrary.ip as chinnu
+from .models import Notice
+
 
 def home_view(request):
     if request.user.is_authenticated:
@@ -521,7 +523,21 @@ def student_dashboard_view(request):
 @user_passes_test(is_student)   
 def student_online_class_view(request):
     return render(request,'school/student_online.html')
+    
 
+@login_required(login_url='studentlogin')
+@user_passes_test(is_student)   
+def student_noticeboard_view(request):
+    studentdata=models.StudentExtra.objects.all().filter(status=True,user_id=request.user.id)
+    notice=models.Notice.objects.all()
+    notice=models.Notice.objects.all()
+    mydict={
+        'roll':studentdata[0].roll,
+        'mobile':studentdata[0].mobile,
+        'notice':notice
+    }
+    return render(request,'school/noticeboard.html',context=mydict)
+    
 
 
 @login_required(login_url='studentlogin')

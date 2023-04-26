@@ -5,6 +5,11 @@
 <head>
   <meta charset="utf-8">
   <title> Chinnu Orphan School</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <style media="screen">
     a:link {
@@ -157,40 +162,37 @@
 
 <body>
 
-  <input type="checkbox" id="check">
-  <!--header area start-->
-  <header>
-  <label for="check">
-    <i class="fas fa-bars" id="sidebar_btn"></i>
-  </label>
-  <div class="left_area">
-    <h3> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Chinnu Orphan School</h3>
+  
+
+    
+
+ <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/admin-dashboard" class="nav-item nav-link">Dashboard</a>
+          <a href="/admin-teacher" class="nav-item nav-link">Teacher</span></a>
+          <a href="/admin-student" class="nav-item nav-link">Student</span></a>
+          <a href="/admin-attendance" class="nav-item nav-link">Attendance</span></a>
+          <a href="/admin-notice" class="nav-item nav-link">Annoucement</span></a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+        
+        
+      </div>
+    </nav>
   </div>
-  <div class="right_area">
-    <a href="/logout" class="logout_btn">Logout</a>
-  </div>
-  </header>
-
-  <!--header area end-->
-  <!--sidebar start-->
-  <div class="sidebar">
-    <center>
-
-      <img src="{% static "images/admin.png" %}" class="profile_image" alt="">
-      <h4>{{request.user.first_name}}</h4>
-
-    </center>
-
-    <a href="/admin-dashboard"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
-    <a href="/admin-teacher"><i class="fas fa-chalkboard-teacher"></i><span>Teacher</span></a>
-    <a href="/admin-student"><i class="fas fa-user-graduate"></i><span>Student</span></a>
-    <a href="/admin-attendance"><i class="fas fa-address-card"></i><span>Attendance</span></a>
-    <a href="/admin-notice"><i class="fas fa-bullhorn"></i><span>Notice</span></a>
-
-
-  </div>
-  <!--sidebar end-->
-
 
   <!--content start-->
   <div class="content">

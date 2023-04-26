@@ -32,7 +32,7 @@
       margin-left: 25%;
       margin-right: 25%;
       padding: 20px;
-      background-color: lightgreen;
+      background-color: lightblue;
       color: white;
     }
 
@@ -54,7 +54,7 @@
     .closebtn:hover {
       color: black;
     }
-    
+      
     .bs-example {
       margin: 0px;
 
@@ -69,18 +69,10 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
+<br>
+
 <body>
-  <br>
-  <br>
-  <br>
-  <center>
-
-      <img src="{% static "images/user-default.png" %}" class="profile_image" alt="">
-      <h4>Hello {{request.user.first_name}}</h4>
-
-    </center>
-  
- <div class="bs-example">
+    <div class="bs-example">
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
       <a href="#" class="navbar-brand">Chinnu Orphan School</a>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -107,11 +99,19 @@
       </div>
     </nav>
   </div>
-<br>
 
-{%include 'school/student_dashboard_cards.html'%}
+<br><br>
+
+<br>
+{%for n in notice%}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  <strong>Posted on {{n.date}} </strong><br><b>By : {{n.by}}</b><br> {{n.message}}
+</div>
+{%endfor%}
 
  {% include "school/footer.html" %}
+
+
 </body>
- 
 </html>

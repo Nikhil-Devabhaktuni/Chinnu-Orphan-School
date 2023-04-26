@@ -1,15 +1,38 @@
-{% extends 'school/teacherbase.html' %}
 {% load static %}
 
-{% block content %}
-
+<!DOCTYPE html>
+<html>
 <head>
+	<title>Chinnu Orphan School</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <style media="screen">
+      .new-class-name {
+      background-color: lightgreen;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 20px;
+    }
+    
+    .new-class-name a {
+      text-decoration: none;
+      color: white;
+    }
+    
+    .new-class-name a:hover {
+      text-decoration: underline;
+    }
+
     .alert {
       margin-left: 25%;
       margin-right: 25%;
       padding: 20px;
-      background-color: #f44336;
+      background-color: lightgreen;
       color: white;
     }
 
@@ -31,26 +54,68 @@
     .closebtn:hover {
       color: black;
     }
+    
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
   </style>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
+<body>
+  <br>
+  <br>
+  <br>
+  <center>
+
+      <img src="{% static "images/teacher.jpg" %}" class="profile_image" alt="" width=200 height =200>
+      <br>
+      <h4>Hello Teacher {{request.user.first_name}}</h4>
+
+    </center>
+  
+ <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/teacher-dashboard" class="nav-item nav-link">Home</a>
+          <a href="/teacher-dashboard" class="nav-item nav-link">Dashboard</a>
+          <!--<a herf="/teacher-online" class="nav-item nav-link">Upcomig features</a> -->
+          <a href="/teacher-attendance" class="nav-item nav-link">Attendance</a>
+          <a href="/teacher-notice" class="nav-item nav-link">Announcement to Notice Board</a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+        
+        
+      </div>
+    </nav>
+  </div>
 <br>
+
 
 {%include 'school/teacher_dashboard_cards.html'%}
 
-<br><br>
-<div class="w3-panel w3-black ">
-  <p>Notice Board</p>
-</div><br>
-{%for n in notice%}
-<div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-  <strong>Posted on {{n.date}} </strong><br><b>By : {{n.by}}</b><br> {{n.message}}
-</div>
-{%endfor%}
+ {% include "school/footer.html" %}
+</body>
+ 
+</html>
 
 
-
-
-{% endblock content %}

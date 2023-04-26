@@ -1,29 +1,111 @@
-{% extends 'school/teacherbase.html' %}
-{% block content %}
 
 <head>
+  
+  <title>Chinnu Orphan School</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <style media="screen">
-    a:link {
-      text-decoration: none;
-    }
+ 
+ <style media="screen">
+  a:link {
+    text-decoration: none;
+  }
 
-    a:link {
-      text-decoration: none;
-    }
+  a:link {
+    text-decoration: none;
+  }
 
-    h6 {
-      text-align: center;
-    }
+  h6 {
+    text-align: center;
+  }
 
-    .row {
-      margin: 100px;
-    }
+  .bs-example {
+    margin: 0px;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+
+  .container {
+    max-width: 2500px;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  table {
+    max-width: 900px;
+    width: 100%;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: left;
+  }
+
+  td, th {
+    border: 1px solid #ddd;
+    padding: 18px;
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+ 
+</style>
+
+</style>
+    
   </style>
 
 </head>
+
+ <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/teacher-dashboard" class="nav-item nav-link">Home</a>
+          <a href="/teacher-dashboard" class="nav-item nav-link">Dashboard</a>
+          <!--<a herf="/teacher-online" class="nav-item nav-link">Upcomig features</a> -->
+          <a href="/teacher-attendance" class="nav-item nav-link">Attendance</a>
+          <a href="/teacher-notice" class="nav-item nav-link">Announcement to Notice Board</a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+        
+        
+      </div>
+    </nav>
+  </div>
+
+
 <div class="container">
 
   <div class="row">
@@ -38,9 +120,9 @@
         <thead>
 
           <tr>
-            <th>Class Name</th>
-            <th>Take Attendance</th>
-            <th>View Attendance</th>
+            <th>Class Name  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+            <th>Take Attendance  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
+            <th>View Attendance  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</th>
           </tr>
         </thead>
 
@@ -108,4 +190,8 @@
     </div>
   </div>
 </div>
-{% endblock content %}
+			<img src="/static/images/index.png" width="1600" height="300">
+
+ {% include "school/footer.html" %}
+
+

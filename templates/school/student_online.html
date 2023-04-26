@@ -1,12 +1,16 @@
-{% extends 'school/studentbase.html' %}
 {% load static %}
 
-{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Chinnu Orphan School</title>
-	<style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style media="screen">
 		.video-container {
 		  position: relative;
 		  padding-bottom: 40.25%;
@@ -32,18 +36,61 @@
 			margin: 20px;
 			text-align: justify;
 		}
+	   
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
 
 	</style>
 </head>
 <body>
+	
+	 <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/student-dashboard" class="nav-item nav-link">Home</a>
+          <a href="/student-online"class="nav-item nav-link">Join Online Class</a>
+          <a href="/student-noticeboard"class="nav-item nav-link">Notice Board</a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+
+
+
+
+      </div>
+    </nav>
+  </div>
+	<br>
+	<br>
 	<h1>Watch This Video About Orphan Kids</h1>
 	<h3 align="center">This is a Sample Class</h3>
 	<div class="video-container">
       <iframe width="400" height="250" src="https://www.youtube.com/embed/82OnTioEybc" frameborder="0" allowfullscreen></iframe>
     </div>
     
-        {% endblock content %}
+    
+     {% include "school/footer.html" %}
+
+    
 
 </body>
 </html>

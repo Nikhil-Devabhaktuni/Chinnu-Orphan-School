@@ -1,15 +1,23 @@
 {% extends 'school/adminbase.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <head>
-  <meta charset="utf-8">
+  <title>Chinnu Orphan School</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style type="text/css">
     a:link {
       text-decoration: none;
@@ -28,7 +36,7 @@
     }
 
     .bg-c-green {
-      background: linear-gradient(45deg, #2ed8b6,#597481);
+      background: linear-gradient(45deg, #2ed8b6, #597481);
     }
 
     .bg-c-yellow {
@@ -36,7 +44,7 @@
     }
 
     .bg-c-pink {
-      background: linear-gradient(45deg, #FF5370, #597481);
+      background: linear-gradient(45deg, #FF5370,#597481);
     }
 
 
@@ -65,12 +73,79 @@
     .f-right {
       float: right;
     }
+    .bs-example {
+    margin: 0px;
+    
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+    font-family: sans-serif;
+  }
+  
+  .center {
+  position: absolute;
+  
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
   </style>
 </head>
+ 
 
+      
+
+    
 <body>
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-  <div class="container">
+   
+
+    <br>
+    <br>
+    <br>
+    
+
+ <div class="bs-example">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <a href="#" class="navbar-brand">Chinnu Orphan School</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav">
+          
+
+
+        </div>
+
+        <div class="navbar-nav">
+          <a href="/admin-dashboard" class="nav-item nav-link">Dashboard</a>
+          <a href="/admin-teacher" class="nav-item nav-link">Teacher</span></a>
+          <a href="/admin-student" class="nav-item nav-link">Student</span></a>
+          <a href="/admin-attendance" class="nav-item nav-link">Attendance</span></a>
+          <a href="/admin-notice" class="nav-item nav-link">Notice</span></a>
+          <a href="/logout" class="nav-item nav-link">Logout</a>
+        </div>
+        
+        
+      </div>
+    </nav>
+  </div>
+  
+       <div class="center">
+        <img src="{% static "images/admin.png" %}" class="profile_image" alt="" width="150" height="150">
+        <h4>Hello Admin, {{request.user.first_name}}</h4>
+      </div>
+      <br>      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+  
+    <div class="container">
     <div class="row">
       <div class="col-md-4 col-xl-3">
         <div class="card bg-c-blue order-card">
@@ -79,7 +154,6 @@
               <h6 class="m-b-20">View All Student</h6>
             </a>
             <br>
-            <h2 class="text-right"><i class="fas fa-eye f-left"></i></h2>
 
           </div>
         </div>
@@ -92,7 +166,6 @@
               <h6 class="m-b-20">Add Student</h6>
             </a>
             <br>
-            <h2 class="text-right"><i class="fas fa-plus-circle f-left"></i></h2>
           </div>
         </div>
       </div>
@@ -104,7 +177,6 @@
               <h6 class="m-b-20">Approve Student</h6>
             </a>
             <br>
-            <h2 class="text-right"><i class="fas fa-check-circle f-left"></i></h2>
           </div>
         </div>
       </div>
@@ -113,6 +185,17 @@
     </div>
     <br><br><br><br><br><br><br><br>
   </div>
+  
+  
+      </div>
+      
+
+    </div>
+    <br><br><br><br>
+  </div>
+
+
+
 
 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
@@ -121,5 +204,6 @@
   </script>
 </body>
 
+{%include 'school/footer.html'%}
 
 {% endblock content %}
